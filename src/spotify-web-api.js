@@ -1649,7 +1649,20 @@ SpotifyWebApi.prototype = {
       .build()
       .execute(HttpManager.get, callback);
   },
+
+  /**
+  * Get current Queue
+  * @param {requestCallback} [callback] Optional callback method to be called instead of the promise.
+  */
+    getQueue:function (callback){
+    return WebApiRequest.builder(this.getAccessToken())
+        .withPath('/v1/me/player/queue')
+        .build()
+        .execute(HttpManager.get,callback)
+  },
 };
+
+
 
 SpotifyWebApi._addMethods = function(methods) {
   for (var i in methods) {
